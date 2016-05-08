@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:design="clr-namespace:TDC2016MVVM;assembly=TDC2016MVVM"
+			 x:Class="TDC2016MVVM.UserView"
+			 BindingContext="{x:Static design:ViewModelLocator.UserViewModel}">
+	<AbsoluteLayout>
+		<Image
+			Source="beerBackground.jpg"
+			Aspect="AspectFill"
+			AbsoluteLayout.LayoutFlags="All"
+			AbsoluteLayout.LayoutBounds="0,0,1,1"/>
+
+		<StackLayout
+				AbsoluteLayout.LayoutFlags="All"
+				AbsoluteLayout.LayoutBounds="1,1,1,0.5" >
+			<Label Text="{Binding ErrorMessage}"
+				   TextColor="Red"
+				   FontAttributes="Bold"
+				   HorizontalOptions="Center" />
+			<Entry Placeholder="Digite seu nome aqui" Text="{Binding Username}" />
+			<Button Text="ENTER" Command="{Binding EnterCommand}" />
+		</StackLayout>
+	</AbsoluteLayout>
+</ContentPage>
