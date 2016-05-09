@@ -13,17 +13,23 @@ namespace TDC2016MVVM
 
         private string username;
         private string errorMessage;
+        private bool isUsernameValid;
 
         public UserViewModel()
         {
             EnterCommand = new Command(obj => OnEnter());
+            ErrorMessage = MIN_CHARACTERS_ERROR_MESSAGE;
         }
 
-        public string Username
+    public string Username
+    {
+        get { return this.username; }
+        set
         {
-            get { return this.username; }
-            set { SetPropertyAndNotify(ref this.username, value); }
+            SetPropertyAndNotify(ref this.username, value);
+            ValidateUsername();
         }
+    }
 
         public string ErrorMessage
         {
@@ -31,43 +37,56 @@ namespace TDC2016MVVM
             set { SetPropertyAndNotify(ref this.errorMessage, value); }
         }
 
+        public bool IsUsernameValid
+        {
+            get { return this.isUsernameValid; }
+            set { SetPropertyAndNotify(ref this.isUsernameValid, value); }
+        }
+
         public ICommand EnterCommand { get; set; }
 
         private void OnEnter()
         {
-            if (IsUsernameValid())
+            if (IsUsernameValid)
             {
                 ServiceLocator.UserService.Save(new User { Name = Username });
                 NavigationService.NavigateTo(new BeerView());
             }
         }
 
-        private bool IsUsernameValid()
-        {
-            if (string.IsNullOrWhiteSpace(Username))
-            {
-                return false;
-            }
+private bool ValidateUsername()
+{
+    if (string.IsNullOrWhiteSpace(Username))
+    {
+        IsUsernameValid = false;
+        ErrorMessage = MIN_CHARACTERS_ERROR_MESSAGE;
+        return false;
+    }
+    //Lógica de validação
 
             if (Username.Equals("Darth Vader", System.StringComparison.OrdinalIgnoreCase))
             {
                 ErrorMessage = UNAVAILABLE_USERNAME;
+                IsUsernameValid = false;
                 return false;
             }
 
             if (Username.Length < MIN_CHARACTERS_LENGTH)
             {
                 ErrorMessage = MIN_CHARACTERS_ERROR_MESSAGE;
+                IsUsernameValid = false;
                 return false;
             }
 
             if (Username.Length > MAX_CHARACTERS_LENGTH)
             {
                 ErrorMessage = MAX_CHARACTERS_ERROR_MESSAGE;
+                IsUsernameValid = false;
                 return false;
             }
 
             ErrorMessage = string.Empty;
+            IsUsernameValid = true;
             return true;
         }
     }

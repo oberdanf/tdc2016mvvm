@@ -13,13 +13,34 @@
 
 		<StackLayout
 				AbsoluteLayout.LayoutFlags="All"
-				AbsoluteLayout.LayoutBounds="1,1,1,0.5" >
-			<Label Text="{Binding ErrorMessage}"
-				   TextColor="Red"
-				   FontAttributes="Bold"
-				   HorizontalOptions="Center" />
-			<Entry Placeholder="Digite seu nome aqui" Text="{Binding Username}" />
-			<Button Text="ENTER" Command="{Binding EnterCommand}" />
+				AbsoluteLayout.LayoutBounds="1,1,1,0.576"
+				Margin="15"
+				Spacing="0">
+			<Label
+				Text="{Binding ErrorMessage}"
+			   	TextColor="White"
+				FontSize="17"
+				HorizontalTextAlignment="Center"
+			   	FontFamily="HelveticaNeue-CondensedBold"
+			   	HorizontalOptions="Center"
+				HeightRequest="20"/>
+			<Entry x:Name="usernameEntry"
+				Placeholder="Digite seu nome aqui"
+				Text="{Binding Username}"
+				TextColor="White"
+				HorizontalTextAlignment="Center"
+				FontFamily="HelveticaNeue-Medium"
+				FontSize="20"
+				HeightRequest="35" />
+			<Button Text="ENTER"
+					Command="{Binding EnterCommand}"
+					FontFamily="HelveticaNeue-CondensedBold"
+					FontSize="30"
+					HeightRequest="50"
+					TextColor="#9B9279"
+					BackgroundColor="#F8EAC6"
+					BorderRadius="0"
+					IsVisible="{Binding IsUsernameValid}"/>
 		</StackLayout>
 	</AbsoluteLayout>
 </ContentPage>

@@ -11,7 +11,7 @@
         private const string BEER_IMAGE_16 = "beerImage16.jpg";
         private const string BEER_IMAGE_20 = "beerImage20.jpg";
 
-        private int drunkBeersCount;
+        private int drankBeersCount;
 
         public BeerViewModel()
         {
@@ -20,22 +20,22 @@
 
         public User User { get; set; }
 
-        public int DrunkBeersCount
+        public int DrankBeersCount
         {
             get
             {
-                return this.drunkBeersCount;
+                return this.drankBeersCount;
             }
             set
             {
-                SetPropertyAndNotify(ref this.drunkBeersCount, value);
-                RaisePropertyChanged(nameof(PersonDrunkImage));
+                SetPropertyAndNotify(ref this.drankBeersCount, value);
+                OnPropertyChanged(nameof(DrunkenPersonImage));
             }
         }
 
-        public string PersonDrunkImage
+        public string DrunkenPersonImage
         {
-            get { return GetBeerImage(DrunkBeersCount); }
+            get { return GetBeerImage(DrankBeersCount); }
         }
 
         private string GetBeerImage(int beerCount)

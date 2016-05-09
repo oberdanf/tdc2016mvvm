@@ -8,6 +8,7 @@ namespace TDC2016MVVM
         {
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
+            this.usernameEntry.BackgroundColor = Color.FromHex("#FFEEC3").MultiplyAlpha(0.5);
         }
     }
 }

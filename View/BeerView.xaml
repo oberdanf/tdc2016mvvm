@@ -12,46 +12,46 @@
 			Aspect="AspectFill"
 			AbsoluteLayout.LayoutFlags="All"
 			AbsoluteLayout.LayoutBounds="0,0,1,1"/>
-		
-		<Grid
+
+		<StackLayout 
 			AbsoluteLayout.LayoutFlags="All"
 			AbsoluteLayout.LayoutBounds="1,1,1,1">
-			<Grid.Margin>
-				<OnPlatform x:TypeArguments="Thickness" iOS="0,20,0,0" />
-			</Grid.Margin>
-			<Grid.RowDefinitions>
-				<RowDefinition Height="*" />
-				<RowDefinition Height="*" />
-				<RowDefinition Height="*" />
-				<RowDefinition Height="5.75*" />
-			</Grid.RowDefinitions>
 
-			<Label Text="{Binding User.Name, StringFormat='Olá {0}. Quantas cervejas você bebeu?'}"
-				   TextColor="Gray"
-				   FontAttributes="Bold"
-				   HorizontalOptions="Center" />
+			<StackLayout.Margin>
+				<OnPlatform x:TypeArguments="Thickness"
+							iOS="20,20,20,0"
+							Android="20,0" />
+			</StackLayout.Margin>
 
-			<Entry Text="{Binding DrunkBeersCount}"
-				   HorizontalTextAlignment="End"
-				   FontSize="28"
-				   FontAttributes="Bold"
-				   BackgroundColor="Transparent"
-				   Margin="20,0"
-				   HeightRequest="35"
-				   Grid.Row="1"/>
+			<Label
+				Text="{Binding User.Name, StringFormat='Olá {0}. Quantas cervejas você bebeu?'}"
+			   	TextColor="#888166"
+			   	FontSize="20"
+			   	FontFamily="HelveticaNeue-Medium"
+			   	FontAttributes="Bold"
+				LineBreakMode="WordWrap"
+			   	HorizontalOptions="Center" />
 
-			<Slider Grid.Row="2"
-					Margin="20,0"
-					Maximum="20"
-					Minimum="0"
-					Value="{Binding DrunkBeersCount, Mode=TwoWay}"/>
+			<Entry
+				Text="{Binding DrankBeersCount}"
+			   	HorizontalTextAlignment="End"
+			    FontFamily="HelveticaNeue-CondensedBold"
+				FontSize="35"
+				HeightRequest="40"
+				TextColor="#4C4C4C"
+				BackgroundColor="#F8EAC6"
+				Keyboard="Numeric" />
 
-			<Image 
-				AbsoluteLayout.LayoutFlags="PositionProportional"
-				AbsoluteLayout.LayoutBounds="1,1,-1,-1"
-				Source="{Binding PersonDrunkImage}"
-				Aspect="AspectFill"
-				Grid.Row="3" />
-		</Grid>
+			<Slider 
+				Maximum="20"
+				Minimum="0"
+				Value="{Binding DrankBeersCount, Mode=TwoWay}"/>
+		</StackLayout>
+
+		<Image
+			AbsoluteLayout.LayoutFlags="All"
+			AbsoluteLayout.LayoutBounds="0.5,1,1,0.7"
+			Source="{Binding DrunkenPersonImage}"
+			Aspect="AspectFill" />
 	</AbsoluteLayout>
 </ContentPage>
