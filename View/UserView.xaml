@@ -30,17 +30,27 @@
 				TextColor="White"
 				HorizontalTextAlignment="Center"
 				FontFamily="HelveticaNeue-Medium"
-				FontSize="20"
-				HeightRequest="35" />
+				FontSize="20">
+				<Entry.HeightRequest>
+					<OnPlatform x:TypeArguments="x:Double"
+								iOS="35"
+								Android="45"/>
+				</Entry.HeightRequest>
+			</Entry>
 			<Button Text="ENTER"
 					Command="{Binding EnterCommand}"
 					FontFamily="HelveticaNeue-CondensedBold"
 					FontSize="30"
-					HeightRequest="50"
 					TextColor="#9B9279"
 					BackgroundColor="#F8EAC6"
 					BorderRadius="0"
-					IsVisible="{Binding IsUsernameValid}"/>
+					IsVisible="true">
+				<Button.HeightRequest>
+					<OnPlatform x:TypeArguments="x:Double"
+								iOS="50"
+								Android="60"/>
+				</Button.HeightRequest>
+			</Button>
 		</StackLayout>
 	</AbsoluteLayout>
 </ContentPage>

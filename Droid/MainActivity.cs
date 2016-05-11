@@ -17,6 +17,7 @@ namespace TDC2016MVVM.Droid
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
 
+            FFImageLoading.Forms.Droid.CachedImageRenderer.Init();
             base.OnCreate(bundle);
 
             Xamarin.Forms.Forms.Init(this, bundle);

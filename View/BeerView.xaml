@@ -3,6 +3,7 @@
 		xmlns="http://xamarin.com/schemas/2014/forms"
 		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 		x:Class="TDC2016MVVM.BeerView"
+		xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
 		xmlns:design="clr-namespace:TDC2016MVVM;assembly=TDC2016MVVM"
 	    BindingContext="{x:Static design:ViewModelLocator.BeerViewModel}">
 
@@ -37,10 +38,15 @@
 			   	HorizontalTextAlignment="End"
 			    FontFamily="HelveticaNeue-CondensedBold"
 				FontSize="35"
-				HeightRequest="40"
 				TextColor="#4C4C4C"
 				BackgroundColor="#F8EAC6"
-				Keyboard="Numeric" />
+				Keyboard="Numeric">
+				<Entry.HeightRequest>
+					<OnPlatform x:TypeArguments="x:Double"
+								iOS="40"
+								Android="60"/>
+				</Entry.HeightRequest>
+			</Entry>
 
 			<Slider 
 				Maximum="20"
@@ -48,7 +54,7 @@
 				Value="{Binding DrankBeersCount, Mode=TwoWay}"/>
 		</StackLayout>
 
-		<Image
+		<ffimageloading:CachedImage
 			AbsoluteLayout.LayoutFlags="All"
 			AbsoluteLayout.LayoutBounds="0.5,1,1,0.7"
 			Source="{Binding DrunkenPersonImage}"

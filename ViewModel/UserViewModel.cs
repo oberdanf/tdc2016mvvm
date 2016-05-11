@@ -21,15 +21,15 @@ namespace TDC2016MVVM
             ErrorMessage = MIN_CHARACTERS_ERROR_MESSAGE;
         }
 
-    public string Username
-    {
-        get { return this.username; }
-        set
+        public string Username
         {
-            SetPropertyAndNotify(ref this.username, value);
-            ValidateUsername();
+            get { return this.username; }
+            set
+            {
+                SetPropertyAndNotify(ref this.username, value);
+                ValidateUsername();
+            }
         }
-    }
 
         public string ErrorMessage
         {
@@ -54,15 +54,15 @@ namespace TDC2016MVVM
             }
         }
 
-private bool ValidateUsername()
-{
-    if (string.IsNullOrWhiteSpace(Username))
-    {
-        IsUsernameValid = false;
-        ErrorMessage = MIN_CHARACTERS_ERROR_MESSAGE;
-        return false;
-    }
-    //Lógica de validação
+        private bool ValidateUsername()
+        {
+            if (string.IsNullOrWhiteSpace(Username))
+            {
+                IsUsernameValid = false;
+                ErrorMessage = MIN_CHARACTERS_ERROR_MESSAGE;
+                return false;
+            }
+            //Lógica de validação
 
             if (Username.Equals("Darth Vader", System.StringComparison.OrdinalIgnoreCase))
             {
